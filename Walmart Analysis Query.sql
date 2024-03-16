@@ -63,21 +63,21 @@ SELECT Count(DISTINCT product_line)
 FROM sales;
 
 
--- What is the most common payment method
+-- Which is the most common payment method?
 SELECT payment_method, count(payment_method) as cnt
 FROM sales
 GROUP BY payment_method
 ORDER BY cnt DESC;
 
 
--- What is the most selling product line
+-- Which is the most selling product line?
 SELECT SUM(quantity) as qty, product_line
 FROM sales
 GROUP BY product_line
 ORDER BY qty DESC;
 
 
--- What is the total revenue by month
+-- What is the total revenue by month?
 SELECT month_name AS month, SUM(total) AS total_revenue
 FROM sales
 GROUP BY month_name 
@@ -129,13 +129,13 @@ GROUP BY branch
 HAVING SUM(quantity) > (SELECT AVG(quantity) FROM sales);
 
 
--- Which is the most common product line by gender
+-- Which is the most common product line by gender?
 SELECT product_line, gender, COUNT(gender) AS total_cnt
 FROM sales
 GROUP BY product_line, gender
 ORDER BY total_cnt DESC;
 
--- What is the average rating of each product line
+-- What is the average rating of each product line?
 SELECT product_line, ROUND(AVG(rating), 2) as avg_rating,
 FROM sales
 GROUP BY product_line
@@ -209,7 +209,7 @@ ORDER BY avg_rating DESC;
 -- ---------------------------- Sales ---------------------------------
 -- --------------------------------------------------------------------
 
--- Number of sales made in each time of the day on Sunday 
+-- Number of sales made in each time of the day on Sunday?
 SELECT time_of_day, COUNT(*) AS total_sales
 FROM sales
 WHERE day_name = "Sunday"
